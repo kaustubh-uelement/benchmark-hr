@@ -1,0 +1,444 @@
+@import "tailwindcss";
+
+/*
+ * One component library, six brand languages.
+ * Every component reads semantic tokens (--bg, --ink, --accent …); each brand
+ * wrapper sets data-theme to swap them. Brand fonts load per layout.
+ */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-display: var(--f-display);
+  --font-body: var(--f-body);
+  --radius-card: var(--r-card);
+  --radius-btn: var(--r-btn);
+  --radius-field: var(--r-field);
+}
+
+:root,
+[data-theme="group"] {
+  --bg: #f6f2eb;
+  --bg-2: #efe8dc;
+  --card: #e9e2d6;
+  --card-2: #ffffff;
+  --ink: #142841;
+  --muted: #4a5970;
+  --faint: #6b7a8f;
+  --line: #d3cbbd;
+  --primary: #142841;
+  --primary-ink: #f3eee6;
+  --accent: #490b1a;
+  --accent-ink: #f3eee6;
+  --accent-soft: #ead2d6;
+  --good: #23613f;
+  --good-soft: #dcebe1;
+  --warn: #8a5a00;
+  --warn-soft: #f5e7c8;
+  --bad: #9b1c2c;
+  --bad-soft: #f6dadd;
+  --f-display: "Gloock", Georgia, serif;
+  --f-body: "Hanken Grotesk", system-ui, sans-serif;
+  --r-card: 22px;
+  --r-btn: 999px;
+  --r-field: 12px;
+}
+
+/* ExH1B — Passage Navy, Marigold, Global Teal; light and dark */
+[data-theme="exh1b"] {
+  --bg: #f5f7fa;
+  --bg-2: #eaeff5;
+  --card: #ffffff;
+  --card-2: #ffffff;
+  --ink: #0e2240;
+  --muted: #4b5d78;
+  --faint: #6a7a92;
+  --line: #d9e1ea;
+  --primary: #0e2240;
+  --primary-ink: #ffffff;
+  --accent: #127c7a;
+  --accent-ink: #ffffff;
+  --accent-soft: #d8efed;
+  --marigold: #f2a93b;
+  --marigold-soft: #fdf0d9;
+  --good: #1d7a4a;
+  --good-soft: #dcf2e5;
+  --warn: #8a5500;
+  --warn-soft: #fcefd5;
+  --bad: #b42335;
+  --bad-soft: #fbe0e4;
+  --f-display: "Sora", system-ui, sans-serif;
+  --f-body: "Manrope", system-ui, sans-serif;
+  --r-card: 16px;
+  --r-btn: 10px;
+  --r-field: 10px;
+}
+[data-theme="exh1b"][data-mode="dark"] {
+  --bg: #0a1628;
+  --bg-2: #0f1e35;
+  --card: #12233d;
+  --card-2: #172b49;
+  --ink: #e8eef6;
+  --muted: #a8b6c9;
+  --faint: #8798ae;
+  --line: #24395a;
+  --primary: #f2a93b;
+  --primary-ink: #0a1628;
+  --accent: #3cc1bd;
+  --accent-ink: #062a29;
+  --accent-soft: #123a3d;
+  --marigold-soft: #3a2c12;
+  --good: #5fd39a;
+  --good-soft: #143a2a;
+  --warn: #f2c063;
+  --warn-soft: #3a2f14;
+  --bad: #ff8a98;
+  --bad-soft: #3d1a22;
+  color-scheme: dark;
+}
+
+/* Golden Glove — obsidian and gold */
+[data-theme="golden-glove"] {
+  --bg: #0b0d10;
+  --bg-2: #111419;
+  --card: #15191f;
+  --card-2: #1b2028;
+  --ink: #f2e9d6;
+  --muted: #c6b99c;
+  --faint: #9a8f78;
+  --line: #2c2a24;
+  --primary: #c9a24e;
+  --primary-ink: #0b0d10;
+  --accent: #d4b06a;
+  --accent-ink: #0b0d10;
+  --accent-soft: #2a2416;
+  --gold-1: #e8d6ad;
+  --gold-2: #b8913f;
+  --gold-3: #7a5c1f;
+  --good: #9fd3a8;
+  --good-soft: #1b2b20;
+  --warn: #e8c46a;
+  --warn-soft: #2e2615;
+  --bad: #f09a9a;
+  --bad-soft: #321b1b;
+  --f-display: "Cormorant Garamond", Georgia, serif;
+  --f-body: "Jost", system-ui, sans-serif;
+  --r-card: 4px;
+  --r-btn: 2px;
+  --r-field: 2px;
+  color-scheme: dark;
+}
+
+/* TrustCircle — linen, deep pine, sunrise */
+[data-theme="trustcircle"] {
+  --bg: #f7f3ec;
+  --bg-2: #efe8db;
+  --card: #ffffff;
+  --card-2: #fbf8f2;
+  --ink: #1f3b35;
+  --muted: #4f625d;
+  --faint: #6c7d78;
+  --line: #e2d9c9;
+  --primary: #1f4d45;
+  --primary-ink: #f7f3ec;
+  --accent: #c8653d;
+  --accent-ink: #ffffff;
+  --accent-soft: #f6e1d5;
+  --sage: #a9c5b4;
+  --good: #2e6b4f;
+  --good-soft: #dcebe2;
+  --warn: #8a5a00;
+  --warn-soft: #f6e8cc;
+  --bad: #a8323c;
+  --bad-soft: #f6dcdf;
+  --f-display: "Fraunces", Georgia, serif;
+  --f-body: "Nunito Sans", system-ui, sans-serif;
+  --r-card: 28px;
+  --r-btn: 999px;
+  --r-field: 14px;
+}
+
+/* Benchmark Talent — ink, electric blue, lime */
+[data-theme="talent"] {
+  --bg: #ffffff;
+  --bg-2: #f3f4f7;
+  --card: #f6f7fb;
+  --card-2: #ffffff;
+  --ink: #0f1222;
+  --muted: #4a4f63;
+  --faint: #6b7084;
+  --line: #e1e3ea;
+  --primary: #0f1222;
+  --primary-ink: #ffffff;
+  --accent: #2747f5;
+  --accent-ink: #ffffff;
+  --accent-soft: #e4e9ff;
+  --lime: #c6f432;
+  --good: #137a45;
+  --good-soft: #dff4e7;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd2;
+  --bad: #c2273d;
+  --bad-soft: #fde2e6;
+  --f-display: "Space Grotesk", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, sans-serif;
+  --r-card: 6px;
+  --r-btn: 6px;
+  --r-field: 6px;
+}
+
+/* Benchmark Advisory — editorial: paper, ink, steel blue */
+[data-theme="advisory"] {
+  --bg: #fbfbf9;
+  --bg-2: #f1f1ed;
+  --card: #ffffff;
+  --card-2: #f6f6f2;
+  --ink: #1b2430;
+  --muted: #4c5563;
+  --faint: #6e7684;
+  --line: #dddcd5;
+  --primary: #1b2430;
+  --primary-ink: #ffffff;
+  --accent: #3d5a80;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2e9f2;
+  --good: #2f6b45;
+  --good-soft: #e0eee5;
+  --warn: #8a5a00;
+  --warn-soft: #f6ebd2;
+  --bad: #a3303a;
+  --bad-soft: #f5dfe1;
+  --f-display: "Newsreader", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, sans-serif;
+  --r-card: 2px;
+  --r-btn: 2px;
+  --r-field: 2px;
+}
+
+/* Operations console */
+[data-theme="console"] {
+  --bg: #f4f2ee;
+  --bg-2: #ebe7e0;
+  --card: #ffffff;
+  --card-2: #faf8f4;
+  --ink: #142841;
+  --muted: #4a5970;
+  --faint: #6b7a8f;
+  --line: #e1dbd0;
+  --primary: #142841;
+  --primary-ink: #f3eee6;
+  --accent: #490b1a;
+  --accent-ink: #f3eee6;
+  --accent-soft: #f1e1e4;
+  --good: #23613f;
+  --good-soft: #dcebe1;
+  --warn: #8a5a00;
+  --warn-soft: #f5e7c8;
+  --bad: #9b1c2c;
+  --bad-soft: #f6dadd;
+  --f-display: "Gloock", Georgia, serif;
+  --f-body: "Hanken Grotesk", system-ui, sans-serif;
+  --r-card: 14px;
+  --r-btn: 10px;
+  --r-field: 10px;
+}
+
+@layer base {
+html,
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+}
+.themed {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  min-height: 100vh;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 2px;
+}
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+}
+
+@layer components {
+/* Shared helpers */
+.field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-field);
+  background: var(--card-2);
+  color: var(--ink);
+  min-height: 44px;
+}
+.field:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+select.field {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+.chip-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chip-check span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--card-2);
+}
+.chip-check input:checked + span {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-ink);
+}
+.chip-check input:focus-visible + span {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.blurred {
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--faint) 40%, transparent) 1.6px, transparent 2px);
+  background-size: 15px 15px;
+}
+
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.rise-2 {
+  animation-delay: 0.12s;
+}
+.rise-3 {
+  animation-delay: 0.24s;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.route-line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: dash 2.6s 0.3s ease-out forwards;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.gold-text {
+  background: linear-gradient(100deg, var(--gold-3), var(--gold-1) 40%, var(--gold-2) 60%, var(--gold-1));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .route-line,
+  .gold-text {
+    animation: none !important;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+table.data th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+table.data td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.data tr:hover td {
+  background: color-mix(in srgb, var(--bg-2) 60%, transparent);
+}
