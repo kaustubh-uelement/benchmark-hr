@@ -11,6 +11,7 @@ import { requireMember, subscriptionOf } from "@/lib/member";
 import { emit } from "@/lib/jev/engine";
 import { validLinkedin } from "@/lib/profile";
 import { nowTs, daysAhead } from "@/lib/time";
+import { getUploadsDir } from "@/lib/paths";
 import type { FormState } from "@/components/client";
 
 const list = (f: FormData, k: string) => f.getAll(k).map(String).filter(Boolean);
@@ -122,7 +123,7 @@ export async function uploadResume(_: FormState, f: FormData): Promise<FormState
     } catch {
       text = pasted;
     }
-    const dir = path.join(process.cwd(), "data", "uploads", String(person.id));
+    const dir = getUploadsDir(String(person.id));
     await fs.mkdir(dir, { recursive: true });
     const safe = file.name.replace(/[^\w.\-]+/g, "_");
     await fs.writeFile(path.join(dir, safe), Buffer.from(await file.arrayBuffer()));

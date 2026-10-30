@@ -10,6 +10,7 @@ import { emit } from "@/lib/jev/engine";
 import { extractText } from "@/lib/jev/extract";
 import { audit } from "@/lib/queries";
 import { addHours, nowTs } from "@/lib/time";
+import { getUploadsDir } from "@/lib/paths";
 import type { FormState } from "@/components/client";
 
 const str = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
@@ -128,8 +129,8 @@ export async function applyToRole(_: FormState, f: FormData): Promise<FormState>
     if (file.size > 5 * 1024 * 1024) return { error: "Please keep the CV under 5 MB." };
     const buf = Buffer.from(await file.arrayBuffer());
     const safe = `${Date.now()}-${file.name.replace(/[^a-z0-9.\-_]/gi, "_")}`;
-    await fs.mkdir(path.join(process.cwd(), "data", "uploads"), { recursive: true });
-    await fs.writeFile(path.join(process.cwd(), "data", "uploads", safe), buf);
+    await fs.mkdir(getUploadsDir(), { recursive: true });
+    await fs.writeFile(path.join(getUploadsDir(), safe), buf);
     resume = { filename: file.name, text: await extractText(buf, file.name, file.type), storage: `uploads/${safe}`, mime: file.type, size: file.size };
   }
   const { person, existed } = resolvePerson(email, first, last, tal, {

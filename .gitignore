@@ -5,6 +5,7 @@ out
 next-env.d.ts
 .env*.local
 .env
-data/*.db*
+data/*.db-shm
+data/*.db-wal
 data/uploads
 .DS_Store
