@@ -1,21 +1,48 @@
 /** Brand marks — simple geometric wordmarks until official logo files are supplied. */
 
+import Image from "next/image";
+
+/** Official Benchmark HR brand marks. */
+
 export function BenchmarkMark({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
-  const c = light ? "#f3eee6" : "#142841";
+  if (compact) {
+    return (
+      <span className="inline-flex items-center no-underline">
+        <Image
+          src="/benchmark-icon.png"
+          alt="Benchmark HR"
+          width={36}
+          height={40}
+          className="h-9 w-auto object-contain"
+          priority
+        />
+      </span>
+    );
+  }
+
   return (
-    <span className="inline-flex items-center gap-3 no-underline" style={{ color: c }}>
-      <svg width="38" height="38" viewBox="0 0 42 42" aria-hidden="true">
-        <circle cx="21" cy="21" r="19.5" fill="none" stroke={c} strokeWidth="1.5" />
-        <circle cx="21" cy="21" r="13.5" fill="none" stroke={c} strokeWidth="1" opacity=".45" />
-        <rect x="16" y="16" width="10" height="10" transform="rotate(45 21 21)" fill={light ? "#e5ded2" : "#490b1a"} />
-      </svg>
-      {!compact && (
-        <span className="flex flex-col leading-none">
-          <span className="font-display text-[23px] tracking-[.05em]">BENCHMARK</span>
-          <span className="mt-1.5 text-[10px] font-bold tracking-[.42em]" style={{ color: light ? "#b3c0cf" : "#4a5970" }}>
-            HR GROUP
-          </span>
+    <span className="inline-flex items-center gap-3 no-underline">
+      {/* If light background, show the full color logo directly; if dark background, render crisp inverted/white container or styled badge */}
+      {light ? (
+        <span className="inline-flex items-center rounded-lg bg-white/95 px-3 py-1.5 shadow-sm backdrop-blur-sm transition-opacity hover:opacity-95">
+          <Image
+            src="/benchmark-logo.png"
+            alt="Benchmark HR — Executive Search & HR Advisory"
+            width={220}
+            height={55}
+            className="h-8 w-auto object-contain sm:h-9"
+            priority
+          />
         </span>
+      ) : (
+        <Image
+          src="/benchmark-logo.png"
+          alt="Benchmark HR — Executive Search & HR Advisory"
+          width={220}
+          height={55}
+          className="h-8 w-auto object-contain sm:h-9"
+          priority
+        />
       )}
     </span>
   );

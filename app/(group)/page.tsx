@@ -1,7 +1,25 @@
 import Link from "next/link";
+import Image from "next/image";
 import { GroupHeader, GroupFooter, ContactForm } from "@/components/group";
 import { ShortlistPill } from "@/components/marks";
-import { COMING_NEXT } from "@/lib/content/brands";
+
+const CLIENTS = [
+  { name: "UElement Technologies", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Enterprise", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Cloud", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Systems", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement AI Labs", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Digital", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Networks", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Security", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Data Plane", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Core", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Innovations", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement DeepTech", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Sovereign", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Global", href: "https://uelement.co/", domain: "uelement.co" },
+  { name: "UElement Partner", href: "https://uelement.co/", domain: "uelement.co" },
+];
 
 const BUSINESSES = [
   { slug: "golden-glove", href: "/goldenglove", tag: "The leader", name: "Golden Glove Executive Search", line: "Retained, partner-led search for CXO, board and rare specialist roles.", cta: "Visit Golden Glove", style: "dark" },
@@ -164,13 +182,48 @@ export default function GroupHome() {
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-16 flex max-w-[1240px] flex-wrap items-center justify-between gap-x-10 gap-y-4 border-t border-[#f3eee61f] px-5 pt-6 sm:px-8">
-          <span className="text-sm font-semibold text-[#b3c0cf]">Founders who have worked with us</span>
-          {["Infinite Uptime", "Securly", "CoReCo Technologies"].map((n) => (
-            <span key={n} className="font-display text-[26px] text-[#dfe5ec]">
-              {n}
-            </span>
-          ))}
+        {/* CLIENTS WHO HAVE WORKED WITH US - HIGH-END EDITORIAL GRID */}
+        <div id="clients" className="mx-auto mt-20 max-w-[1240px] border-t border-[#f3eee61f] px-5 pt-12 sm:px-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="m-0 text-xs font-bold uppercase tracking-[.28em] text-[#d4b06a]">Trusted by industry leaders</p>
+              <h2 className="m-0 mt-1.5 font-display text-2xl font-normal text-[#f3eee6] sm:text-3xl">
+                Clients who have worked with us
+              </h2>
+            </div>
+            <p className="m-0 text-sm text-[#b3c0cf]">
+              Across deep tech, enterprise software, banking & global capability centres
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 lg:gap-4">
+            {CLIENTS.map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${c.name} — ${c.domain}`}
+                className="group relative flex h-24 flex-col items-center justify-center rounded-xl border border-[#f3eee61a] bg-gradient-to-b from-[#1b3352]/70 to-[#142841]/90 px-4 py-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.3)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#d4b06a]/60 hover:bg-[#1b3352] hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.45)]"
+              >
+                <div className="relative flex h-10 w-full items-center justify-center opacity-85 transition-opacity duration-300 group-hover:opacity-100">
+                  <Image
+                    src="/uelement-logo.png"
+                    alt={c.name}
+                    width={140}
+                    height={32}
+                    className="max-h-8 w-auto object-contain filter brightness-110 contrast-105"
+                  />
+                </div>
+                <span className="mt-2 text-[10.5px] font-medium tracking-wide text-[#b3c0cf] opacity-75 transition-colors group-hover:text-[#f3eee6] group-hover:opacity-100">
+                  {c.domain}
+                </span>
+                <span className="absolute right-2 top-2 text-[10px] text-[#d4b06a] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -209,12 +262,12 @@ export default function GroupHome() {
               Talk to us
             </Link>
           </div>
-          <div className="flex min-w-0 flex-[2_1_640px] flex-wrap gap-4">
+          <div className="grid min-w-0 flex-[2_1_640px] grid-cols-1 gap-4 sm:grid-cols-2">
             {BUSINESSES.map((b) => {
               const dark = b.style === "dark";
               const burg = b.style === "burgundy";
               return (
-                <article key={b.slug} className={`flex min-h-[250px] flex-[1_1_260px] flex-col gap-3 rounded-[22px] p-7 ${dark ? "bg-[#142841] text-[#f3eee6]" : burg ? "bg-[#490b1a] text-[#f3eee6]" : "bg-card"}`}>
+                <article key={b.slug} className={`flex min-h-[250px] flex-col gap-3 rounded-[22px] p-7 transition-transform hover:-translate-y-0.5 ${dark ? "bg-[#142841] text-[#f3eee6]" : burg ? "bg-[#490b1a] text-[#f3eee6]" : "bg-card"}`}>
                   <Icon kind={b.slug} color={dark ? "#d4b06a" : burg ? "#e5ded2" : "#142841"} />
                   <span className={`text-[13px] font-bold ${dark ? "text-[#d4b06a]" : burg ? "text-[#dcb6be]" : "text-accent"}`}>{b.tag}</span>
                   <h3 className="m-0 font-display text-[26px] font-normal leading-[1.12]">{b.name}</h3>
@@ -230,17 +283,6 @@ export default function GroupHome() {
                 </article>
               );
             })}
-            <article className="flex min-h-[250px] flex-[1_1_260px] flex-col gap-3 rounded-[22px] border-[1.5px] border-dashed border-line p-7">
-              <span className="text-[13px] font-bold text-accent">Coming next</span>
-              <h3 className="m-0 font-display text-[26px] font-normal leading-[1.12]">New services in development</h3>
-              <ul className="m-0 flex list-none flex-col gap-2 p-0 text-[15px]">
-                {COMING_NEXT.map((c) => (
-                  <li key={c.name}>
-                    <b>{c.name}</b> <span className="text-muted">— {c.line}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
           </div>
         </div>
       </section>
