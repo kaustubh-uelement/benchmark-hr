@@ -96,11 +96,20 @@ export function ExH1BMark() {
 export function TrustCircleMark() {
   return (
     <span className="inline-flex items-center gap-2.5">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
-        <circle cx="13" cy="17" r="9" fill="none" stroke="var(--primary)" strokeWidth="2.2" />
-        <circle cx="21" cy="17" r="9" fill="none" stroke="var(--accent)" strokeWidth="2.2" />
+      <svg width="40" height="29" viewBox="0 0 44 32" aria-hidden="true" className="shrink-0">
+        <mask id="tc-mark-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="32">
+          <rect width="44" height="32" fill="#fff" />
+          <circle cx="28" cy="16" r="10.9" fill="none" stroke="#000" strokeWidth="6.2" />
+        </mask>
+        <circle cx="14" cy="16" r="12" mask="url(#tc-mark-cut)" fill="#2e61ba" />
+        <circle cx="28" cy="16" r="10.8" fill="none" stroke="#e9af3a" strokeWidth="3.2" />
       </svg>
-      <span className="font-display text-[22px] font-semibold">TrustCircle</span>
+      <span className="flex flex-col leading-none font-display font-semibold text-[20px] tracking-tight">
+        <span>TrustCircle</span>
+        <span className="mt-1 font-sans text-[9px] font-extrabold uppercase tracking-[.18em] text-muted">
+          Outplacements
+        </span>
+      </span>
     </span>
   );
 }

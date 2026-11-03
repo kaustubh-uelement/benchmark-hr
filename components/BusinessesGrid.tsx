@@ -45,9 +45,13 @@ function BusinessIcon({ slug, color }: { slug: string; color: string }) {
   }
   if (slug === "trustcircle") {
     return (
-      <svg {...p}>
-        <circle cx="12" cy="15" r="8" />
-        <circle cx="18" cy="15" r="8" />
+      <svg width="40" height="29" viewBox="0 0 44 32" aria-hidden="true">
+        <mask id="bg-tc-mark-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="32">
+          <rect width="44" height="32" fill="#fff" />
+          <circle cx="28" cy="16" r="10.9" fill="none" stroke="#000" strokeWidth="6.2" />
+        </mask>
+        <circle cx="14" cy="16" r="12" mask="url(#bg-tc-mark-cut)" fill="#2e61ba" />
+        <circle cx="28" cy="16" r="10.8" fill="none" stroke="#e9af3a" strokeWidth="3.2" />
       </svg>
     );
   }
