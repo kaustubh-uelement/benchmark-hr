@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GroupHeader, GroupFooter, ContactForm } from "@/components/group";
 import { brandBySlug } from "@/lib/content/brands";
+import { BusinessPageCta } from "@/components/BusinessPageCta";
 
 const DETAIL: Record<string, { for: string[]; what: string[]; how: string[] }> = {
   "golden-glove": {
@@ -50,14 +51,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
           <p className={`m-0 text-sm font-bold ${golden ? "text-[#d4b06a]" : "text-[#b3c0cf]"}`}>Benchmark HR Group · {b.tagline}</p>
           <h1 className="m-0 mt-4 max-w-3xl font-display text-[clamp(40px,5.4vw,76px)] font-normal leading-[1.04]">{b.name}</h1>
           <p className="mt-6 max-w-2xl text-xl leading-relaxed text-[#c9d2dc]">{b.description}</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href={b.base} className={`inline-flex min-h-12 items-center rounded-full px-6 font-bold no-underline ${golden ? "bg-[#d4b06a] text-[#0b1828]" : "bg-[#e5ded2] text-[#142841]"}`}>
-              Go to {b.shortName}
-            </Link>
-            <Link href="#contact" className="inline-flex min-h-12 items-center rounded-full border-[1.5px] border-[#f3eee666] px-5 font-bold no-underline">
-              Talk to us
-            </Link>
-          </div>
+          <BusinessPageCta slug={slug} shortName={b.shortName} golden={golden} />
         </div>
       </section>
       <section className="px-5 py-20 sm:px-8">

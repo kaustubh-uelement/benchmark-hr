@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { getUser, homeFor } from "@/lib/auth";
 import { cx } from "./ui";
+import { BrandShellGroupLinks } from "./BrandShellGroupLinks";
 
 /** Header used by the Talent, TrustCircle and Advisory sites. Each brand's tokens restyle it. */
 export async function BrandHeader({ mark, home, nav, cta, login, portal = false, className }: { mark: ReactNode; home: string; nav: [string, string][]; cta: [string, string]; login: string; portal?: boolean; className?: string }) {
@@ -60,21 +61,7 @@ export function BrandFooter({ mark, line, contact, className }: { mark: ReactNod
           </a>
           <span>Pune, India</span>
         </div>
-        <div className="flex flex-col gap-1.5 text-sm text-muted">
-          <b className="mb-1 text-ink">Benchmark HR Group</b>
-          {[
-            ["Group", "/"],
-            ["Golden Glove Executive Search", "/goldenglove"],
-            ["Benchmark Talent", "/talent"],
-            ["ExH1B", "/exh1b"],
-            ["TrustCircle Outplacements", "/trustcircle"],
-            ["Benchmark Advisory", "/advisory"],
-          ].map(([l, h]) => (
-            <Link key={h} href={h} className="no-underline hover:text-ink">
-              {l}
-            </Link>
-          ))}
-        </div>
+        <BrandShellGroupLinks />
       </div>
       <div className="mx-auto max-w-[1240px] px-5 pb-8 text-xs text-faint sm:px-8">© 2026 Benchmark HR Group. Personal data is handled under India&apos;s DPDP Act.</div>
     </footer>

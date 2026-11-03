@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GoldenGloveMark } from "./marks";
+import { BrandShellGroupLinks } from "./BrandShellGroupLinks";
 import { getUser, homeFor } from "@/lib/auth";
 
 export async function GGHeader({ portal = false }: { portal?: boolean }) {
@@ -58,14 +59,7 @@ export function GGFooter() {
           <a href="mailto:partners@goldenglove.in" className="no-underline hover:text-ink">partners@goldenglove.in</a>
           <a href="tel:+918888400044" className="no-underline hover:text-ink">+91 88884 00044</a>
         </div>
-        <div className="flex flex-col gap-2 text-sm text-muted">
-          <span className="mb-1 text-[12px] uppercase tracking-[.28em] text-[var(--gold-2)]">Group</span>
-          <Link href="/" className="no-underline hover:text-ink">Benchmark HR Group</Link>
-          <Link href="/talent" className="no-underline hover:text-ink">Benchmark Talent</Link>
-          <Link href="/exh1b" className="no-underline hover:text-ink">ExH1B</Link>
-          <Link href="/trustcircle" className="no-underline hover:text-ink">TrustCircle</Link>
-          <Link href="/advisory" className="no-underline hover:text-ink">Benchmark Advisory</Link>
-        </div>
+        <BrandShellGroupLinks isDark />
       </div>
       <div className="mx-auto max-w-[1280px] px-5 pb-8 text-xs text-faint sm:px-10">© 2026 Golden Glove Executive Search · Benchmark HR Group. Candidate information is held in confidence under India&apos;s DPDP Act.</div>
     </footer>

@@ -4,6 +4,7 @@ import { ActionForm, SubmitButton } from "./client";
 import { submitLead } from "@/app/actions/leads";
 import { BRANDS } from "@/lib/content/brands";
 import { getUser, homeFor } from "@/lib/auth";
+import { BrandFooterLinks } from "./BrandFooterLinks";
 
 export async function GroupHeader({ dark = true }: { dark?: boolean }) {
   const u = await getUser();
@@ -126,18 +127,12 @@ export function GroupFooter() {
             people seriously.
           </p>
         </div>
-        <div className="flex flex-col gap-2 text-sm">
-          <span className="mb-1 font-bold text-[#f3eee6]">Businesses</span>
-          {BRANDS.filter((b) => b.kind === "subsidiary").map((b) => (
-            <Link
-              key={b.slug}
-              href={b.base}
-              className="no-underline hover:text-white"
-            >
-              {b.name}
-            </Link>
-          ))}
-        </div>
+        <BrandFooterLinks
+          brands={BRANDS.filter((b) => b.kind === "subsidiary").map((b) => ({
+            slug: b.slug,
+            name: b.name,
+          }))}
+        />
         <div className="flex flex-col gap-2 text-sm">
           <span className="mb-1 font-bold text-[#f3eee6]">Company</span>
           <Link href="/#process" className="no-underline hover:text-white">
