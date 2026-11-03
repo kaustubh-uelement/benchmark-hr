@@ -404,15 +404,6 @@ select.field {
   color: transparent;
   animation: shimmer 9s linear infinite;
 }
-@media (prefers-reduced-motion: reduce) {
-  .rise,
-  .route-line,
-  .gold-text {
-    animation: none !important;
-    opacity: 1;
-    stroke-dashoffset: 0;
-  }
-}
 
 .scroll-x {
   overflow-x: auto;

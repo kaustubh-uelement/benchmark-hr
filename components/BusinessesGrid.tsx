@@ -60,11 +60,11 @@ function BusinessIcon({ slug, color }: { slug: string; color: string }) {
 }
 
 const UPCOMING_SECTIONS = [
-  { title: "Specialist Client Portal", desc: "Private room for mandate status, live pipeline and candidate assessment dossiers." },
-  { title: "Interview Scheduling & Feedback", desc: "Coordinated interview loops, structured scorecard reviews and stakeholder feedback." },
-  { title: "Compensation & Offer Advisory", desc: "Real-time benchmarking, market intelligence and equity package structuring." },
-  { title: "Direct Partner Outreach", desc: "Confidential talent mapping and partner-led discreet inquiries." },
-  { title: "Executive Onboarding Care", desc: "Structured 30/90/180-day transition checkpoints to settle new leaders." },
+  "Specialist Client Portal & candidate dossiers",
+  "Real-time compensation & equity benchmarking",
+  "Confidential partner-led talent inquiries",
+  "Structured 30/90/180-day executive onboarding care",
+  "Live mandate status & interview loops",
 ];
 
 export function BusinessesGrid({ businesses }: { businesses: readonly BusinessItem[] }) {
@@ -142,23 +142,23 @@ export function BusinessesGrid({ businesses }: { businesses: readonly BusinessIt
           {/* Backdrop with blur matching website theme */}
           <div
             onClick={() => setModalBusiness(null)}
-            className="fixed inset-0 bg-[#0a1524]/75 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
+            className="fixed inset-0 bg-[#0a1524]/80 backdrop-blur-md transition-opacity animate-in fade-in duration-200"
           />
 
           {/* Modal Container */}
-          <div className="relative z-10 w-full max-w-xl overflow-hidden rounded-[26px] border border-[#f3eee624] bg-gradient-to-b from-[#1b3352] to-[#112338] p-6 text-[#f3eee6] shadow-2xl sm:p-8">
+          <div className="relative z-10 w-full max-w-lg overflow-hidden rounded-[24px] border border-[#f3eee624] bg-gradient-to-b from-[#1b3352] to-[#112338] p-6 text-[#f3eee6] shadow-2xl sm:p-7">
             {/* Header Badge & Close button */}
             <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-[#d4b06a] animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-[.22em] text-[#d4b06a]">
-                  Platform Feature Preview
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#d4b06a]/15 px-3 py-1">
+                <span className="h-2 w-2 rounded-full bg-[#d4b06a] animate-pulse" />
+                <span className="text-[11px] font-bold uppercase tracking-[.2em] text-[#d4b06a]">
+                  Coming Soon
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setModalBusiness(null)}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-lg text-[#f3eee6] transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-sm text-[#f3eee6] transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
                 aria-label="Close modal"
               >
                 ✕
@@ -167,58 +167,52 @@ export function BusinessesGrid({ businesses }: { businesses: readonly BusinessIt
 
             {/* Title & Status */}
             <div className="mt-4">
-              <h3 className="m-0 font-display text-[26px] font-normal leading-tight text-[#f3eee6] sm:text-[32px]">
+              <h3 className="m-0 font-display text-[26px] font-normal leading-tight text-[#f3eee6] sm:text-[28px]">
                 {modalBusiness.name}
               </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-[#c9d2dc]">
-                The standalone web experience for <strong className="text-white">{modalBusiness.name}</strong> is currently being finalized and will be launching shortly.
+              <p className="mt-2 text-sm leading-relaxed text-[#c9d2dc]">
+                The dedicated online portal for <strong className="text-white">{modalBusiness.name}</strong> is currently under development.
               </p>
             </div>
 
-            {/* 5 Distinct Sections */}
-            <div className="mt-6 flex flex-col gap-2.5">
-              <p className="m-0 text-[11.5px] font-bold uppercase tracking-wider text-[#b3c0cf]">
-                What to expect in this space:
+            {/* 5 Distinct Highlights */}
+            <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.04] p-4">
+              <p className="m-0 mb-3 text-[11px] font-bold uppercase tracking-wider text-[#d4b06a]">
+                Platform Capabilities in Development:
               </p>
-              <div className="grid gap-2 sm:grid-cols-1">
+              <ul className="m-0 flex flex-col gap-2 p-0 list-none text-xs text-[#e5ded2]">
                 {UPCOMING_SECTIONS.map((sec, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-3 rounded-xl border border-white/5 bg-white/[0.04] p-3 transition-colors hover:bg-white/[0.07]"
-                  >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#d4b06a]/20 text-xs font-bold text-[#d4b06a]">
-                      {idx + 1}
+                  <li key={idx} className="flex items-center gap-2.5">
+                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#d4b06a]/20 text-[10px] font-bold text-[#d4b06a]">
+                      ✓
                     </span>
-                    <div>
-                      <h4 className="m-0 text-sm font-semibold text-[#f3eee6]">{sec.title}</h4>
-                      <p className="m-0 text-xs text-[#b3c0cf]">{sec.desc}</p>
-                    </div>
-                  </div>
+                    <span>{sec}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {/* Modal Actions */}
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
               <Link
                 href={`/businesses/${modalBusiness.slug}`}
                 onClick={() => setModalBusiness(null)}
-                className="text-sm font-semibold text-[#d4b06a] hover:underline"
+                className="text-xs font-semibold text-[#d4b06a] hover:underline"
               >
-                Read practice overview →
+                Practice overview →
               </Link>
               <div className="flex gap-2">
                 <Link
                   href="#contact"
                   onClick={() => setModalBusiness(null)}
-                  className="inline-flex min-h-10 items-center rounded-full bg-[#e5ded2] px-5 text-sm font-bold text-[#142841] no-underline transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-9 items-center rounded-full bg-[#e5ded2] px-4 text-xs font-bold text-[#142841] no-underline transition-opacity hover:opacity-90"
                 >
-                  Contact our practice team
+                  Contact team
                 </Link>
                 <button
                   type="button"
                   onClick={() => setModalBusiness(null)}
-                  className="inline-flex min-h-10 items-center rounded-full border border-white/20 px-4 text-sm font-semibold text-white hover:bg-white/10"
+                  className="inline-flex min-h-9 items-center rounded-full border border-white/20 px-3 text-xs font-semibold text-white hover:bg-white/10"
                 >
                   Close
                 </button>

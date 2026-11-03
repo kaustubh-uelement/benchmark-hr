@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GroupHeader, GroupFooter, ContactForm } from "@/components/group";
 import { ShortlistPill } from "@/components/marks";
 import { BusinessesGrid, type BusinessItem } from "@/components/BusinessesGrid";
+import { GlobalPlacesMap } from "@/components/GlobalPlacesMap";
 
 const CLIENTS = [
   { name: "UElement Technologies", href: "https://uelement.co/", domain: "uelement.co" },
@@ -228,30 +229,8 @@ export default function GroupHome() {
         </div>
       </section>
 
-      {/* STATEMENT OVER DOT FIELD */}
-      <section className="relative overflow-hidden bg-[#142841] px-5 pb-24 pt-8 text-[#f3eee6] sm:px-8">
-        <div className="relative mx-auto h-[460px] max-w-[1240px] sm:h-[540px]">
-          <div className="dots absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_62%_70%_at_50%_50%,#000_45%,transparent_100%)]" aria-hidden="true" />
-          <svg viewBox="0 0 1000 560" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
-            <path d="M200 210 C 300 70, 400 90, 460 140" fill="none" stroke="#e5ded2" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-            <path d="M460 140 C 560 120, 640 170, 690 290" fill="none" stroke="#e5ded2" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-            <path d="M200 210 C 360 420, 560 430, 690 290" fill="none" stroke="#798da6" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-          </svg>
-          {[
-            ["20%", "37.5%", "Illinois, US", false],
-            ["46%", "25%", "United Kingdom", false],
-            ["69%", "52%", "Pune and Delhi, India", true],
-          ].map(([l, t, label, main]) => (
-            <div key={label as string} className="absolute flex -translate-x-2 -translate-y-2 items-center gap-2.5" style={{ left: l as string, top: t as string }}>
-              <span className={main ? "h-[18px] w-[18px] rounded-full border-[3px] border-[#e5ded2] bg-[#490b1a] shadow-[0_0_0_7px_rgba(229,222,210,.16)]" : "h-3.5 w-3.5 rounded-full bg-[#e5ded2] shadow-[0_0_0_6px_rgba(229,222,210,.18)]"} />
-              <span className="text-sm font-bold">{label}</span>
-            </div>
-          ))}
-          <p className="absolute inset-x-0 bottom-6 mx-auto m-0 max-w-[820px] px-4 text-center font-display text-[clamp(24px,3vw,40px)] leading-snug">
-            Since 2013, Benchmark has helped more than 90 organisations find the leaders and build the teams that shape them.
-          </p>
-        </div>
-      </section>
+      {/* PROPER GLOBAL PLACES MAP (Adapted from Codepen with pulse pins & dark luxury styling) */}
+      <GlobalPlacesMap />
 
       {/* BUSINESSES */}
       <section id="businesses" className="px-5 py-24 sm:px-8">
