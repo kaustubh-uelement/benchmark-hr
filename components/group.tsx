@@ -114,9 +114,9 @@ export function GroupFooter() {
             href="https://uelement.co/platforms/u92-enterprise/nexus/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-[#f3eee6] underline decoration-neutral-500 underline-offset-4 transition-colors hover:text-[#d4b06a]"
+            className="text-[#f3eee6] underline decoration-neutral-500 underline-offset-4 transition-colors hover:text-[#d4b06a]"
           >
-            UElement Nexus Platform
+            <strong className="font-bold">UElement Nexus</strong> Platform
           </a>
         </span>
       </div>
