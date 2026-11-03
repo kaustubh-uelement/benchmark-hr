@@ -101,14 +101,24 @@ export function GroupFooter() {
         </div>
         <div className="flex flex-col gap-2 text-sm">
           <span className="mb-1 font-bold text-[#f3eee6]">Contact</span>
-          <a href="mailto:hello@benchmarkhr.in" className="no-underline hover:text-white">hello@benchmarkhr.in</a>
+          <a href="mailto:contact@benchmarkhr.in" className="no-underline hover:text-white">contact@benchmarkhr.in</a>
           <a href="tel:+918888400044" className="no-underline hover:text-white">+91 88884 00044</a>
           <span>Pune, India</span>
         </div>
       </div>
-      <div className="mx-auto flex max-w-[1240px] flex-wrap justify-between gap-2 border-t border-[#ffffff14] px-5 py-6 text-xs sm:px-8">
+      <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 border-t border-[#ffffff14] px-5 py-6 text-xs sm:px-8">
         <span>© 2026 Benchmark HR. All rights reserved.</span>
-        <Link href="/#contact" className="no-underline hover:text-white">Privacy policy</Link>
+        <span>
+          built on{" "}
+          <a
+            href="https://uelement.co/platforms/u92-enterprise/nexus/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[#f3eee6] underline decoration-neutral-500 underline-offset-4 transition-colors hover:text-[#d4b06a]"
+          >
+            UElement Nexus Platform
+          </a>
+        </span>
       </div>
     </footer>
   );

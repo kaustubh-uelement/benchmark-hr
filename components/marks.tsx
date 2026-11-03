@@ -21,26 +21,23 @@ export function BenchmarkMark({ light = false, compact = false }: { light?: bool
   }
 
   return (
-    <span className="inline-flex items-center gap-3 no-underline">
-      {/* If light background, show the full color logo directly; if dark background, render crisp inverted/white container or styled badge */}
+    <span className="inline-flex items-center no-underline">
       {light ? (
-        <span className="inline-flex items-center rounded-lg bg-white/95 px-3 py-1.5 shadow-sm backdrop-blur-sm transition-opacity hover:opacity-95">
-          <Image
-            src="/benchmark-logo.png"
-            alt="Benchmark HR — Executive Search & HR Advisory"
-            width={220}
-            height={55}
-            className="h-8 w-auto object-contain sm:h-9"
-            priority
-          />
-        </span>
+        <Image
+          src="/benchmark-logo-white.png"
+          alt="Benchmark HR — Executive Search & HR Advisory"
+          width={240}
+          height={55}
+          className="h-8 w-auto object-contain transition-opacity hover:opacity-90 sm:h-9"
+          priority
+        />
       ) : (
         <Image
-          src="/benchmark-logo.png"
+          src="/benchmark-logo-dark.png"
           alt="Benchmark HR — Executive Search & HR Advisory"
-          width={220}
+          width={240}
           height={55}
-          className="h-8 w-auto object-contain sm:h-9"
+          className="h-8 w-auto object-contain transition-opacity hover:opacity-90 sm:h-9"
           priority
         />
       )}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GroupHeader, GroupFooter, ContactForm } from "@/components/group";
 import { ShortlistPill } from "@/components/marks";
+import { BusinessesGrid, type BusinessItem } from "@/components/BusinessesGrid";
 
 const CLIENTS = [
   { name: "UElement Technologies", href: "https://uelement.co/", domain: "uelement.co" },
@@ -262,28 +263,7 @@ export default function GroupHome() {
               Talk to us
             </Link>
           </div>
-          <div className="grid min-w-0 flex-[2_1_640px] grid-cols-1 gap-4 sm:grid-cols-2">
-            {BUSINESSES.map((b) => {
-              const dark = b.style === "dark";
-              const burg = b.style === "burgundy";
-              return (
-                <article key={b.slug} className={`flex min-h-[250px] flex-col gap-3 rounded-[22px] p-7 transition-transform hover:-translate-y-0.5 ${dark ? "bg-[#142841] text-[#f3eee6]" : burg ? "bg-[#490b1a] text-[#f3eee6]" : "bg-card"}`}>
-                  <Icon kind={b.slug} color={dark ? "#d4b06a" : burg ? "#e5ded2" : "#142841"} />
-                  <span className={`text-[13px] font-bold ${dark ? "text-[#d4b06a]" : burg ? "text-[#dcb6be]" : "text-accent"}`}>{b.tag}</span>
-                  <h3 className="m-0 font-display text-[26px] font-normal leading-[1.12]">{b.name}</h3>
-                  <p className={`m-0 text-[15.5px] leading-relaxed ${dark || burg ? "text-[#c9d2dc]" : "text-muted"}`}>{b.line}</p>
-                  <div className="mt-auto flex flex-wrap gap-x-5 gap-y-1 text-[15px] font-bold">
-                    <Link href={`/businesses/${b.slug}`} className={dark ? "text-[#d4b06a]" : ""}>
-                      Learn more
-                    </Link>
-                    <Link href={b.href} className={dark ? "text-[#d4b06a]" : ""}>
-                      {b.cta} →
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+          <BusinessesGrid businesses={BUSINESSES} />
         </div>
       </section>
 
@@ -413,7 +393,7 @@ export default function GroupHome() {
               <div>
                 <dt className="font-bold text-[#dcb6be]">Email</dt>
                 <dd className="m-0">
-                  <a href="mailto:hello@benchmarkhr.in">hello@benchmarkhr.in</a>
+                  <a href="mailto:contact@benchmarkhr.in">contact@benchmarkhr.in</a>
                 </dd>
               </div>
               <div>
