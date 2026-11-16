@@ -29,9 +29,9 @@ function open(): { db: DB; raw: Database.Database } {
   const dir = path.dirname(dbPath);
   fs.mkdirSync(dir, { recursive: true });
 
-  // On Vercel, if a pre-seeded benchmark.db exists in the bundled build, copy it over to /tmp if not already there
-  if (IS_VERCEL && !fs.existsSync(dbPath)) {
-    const bundledPath = path.join(process.cwd(), "data", "benchmark.db");
+  // In serverless or when writing to /tmp, if a pre-seeded benchmark.db exists in the bundled build, copy it over if not already there
+  const bundledPath = path.join(process.cwd(), "data", "benchmark.db");
+  if (dbPath !== bundledPath && !fs.existsSync(dbPath)) {
     if (fs.existsSync(bundledPath)) {
       try {
         fs.copyFileSync(bundledPath, dbPath);

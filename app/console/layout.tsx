@@ -40,7 +40,7 @@ export default async function ConsoleLayout({ children }: { children: React.Reac
       title: "Overview",
       items: [
         { label: "Dashboard", href: "/console" },
-        { label: "Ask Jev", href: "/console/jev/ask" },
+        { label: "Candidate Search", href: "/console/jev/ask" },
       ],
     },
     {
@@ -109,9 +109,9 @@ export default async function ConsoleLayout({ children }: { children: React.Reac
           <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-line bg-bg/95 px-4 py-3 backdrop-blur sm:px-8">
             <form action="/console/jev/ask" className="flex min-w-0 flex-1 items-center">
               <label className="sr-only" htmlFor="jevq">
-                Ask Jev
+                Search candidates
               </label>
-              <input id="jevq" name="q" placeholder="Ask Jev: “CFOs in Pune with 15+ years who'd consider a startup”" className="field !min-h-10 max-w-xl !rounded-full !py-2 text-sm" />
+              <input id="jevq" name="q" placeholder="Search candidates, skills, locations (e.g. “CFOs in Pune with 15+ years”)..." className="field !min-h-10 max-w-xl !rounded-full !py-2 text-sm" />
             </form>
             <details className="relative">
               <summary className="relative inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full hover:bg-bg-2" aria-label={`Notifications, ${unread} unread`}>
